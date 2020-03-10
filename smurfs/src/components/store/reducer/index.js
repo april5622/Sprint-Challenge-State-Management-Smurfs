@@ -5,7 +5,7 @@ import { FETCHING_SMURF_START,
     } from "../action/index";
 
 const initialState = {
-    smurfs: null,
+    smurfs: [],
     isFetching: false,
     error: ""
 
@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 isFetching: false,
-                name: action.payload
+                smurfs: action.payload
             };
         case ADD_SMURF_START:
             return{
@@ -34,8 +34,8 @@ export const reducer = (state = initialState, action) => {
         case ADD_SMURF_SUCCESS:
             return{
                 ...state,
-                isFetching: false,
-                error: ""
+                smurfs: action.payload,
+                isFetching: false
             };
         default:
             return state;

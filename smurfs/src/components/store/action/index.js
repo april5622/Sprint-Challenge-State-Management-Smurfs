@@ -19,28 +19,28 @@ export const getSmurf = () => dispatch => {
 
         .catch(err => {
             console.log("err", err);
-            dispatch({
-                type: FETCHING_SMURF_FAILURE, 
-                payload: `${err.response.message} with response code ${err.response.code}`
-            });
+            // dispatch({
+            //     type: FETCHING_SMURF_FAILURE, 
+            //     payload: `${err.response.message} with response code ${err.response.code}`
+            // });
         });
 };
 
-export const addSmurf = (smurfs) => dispatch => {
+export const addSmurf = (smurf) => dispatch => {
     dispatch({type: ADD_SMURF_START});
 
     axios
-        .post("http://localhost:3333/smurfs", smurfs)
+        .post("http://localhost:3333/smurfs", smurf)
         .then(res => {
             console.log("addSmurf", res)
             dispatch({type: ADD_SMURF_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log("addSmurf", err)
-            dispatch({
-                type: ADD_SMURF_FAILURE,
-                payload: `${err.response.message} with response code ${err.response.code}`
-             });
+            // dispatch({
+            //     type: ADD_SMURF_FAILURE,
+            //     payload: `${err.response.message} with response code ${err.response.code}`
+            //  });
         });
 };
 

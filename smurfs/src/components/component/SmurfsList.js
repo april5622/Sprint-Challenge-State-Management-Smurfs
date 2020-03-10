@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
-import {getSmurf} from "../store/action/index";
+import { getSmurf } from "../store/action/index";
 import Smurfs from "./Smurfs";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 
-const SmurfsList = (props, isFetching, error) => {
+const SmurfsList = (props, getSmurf, isFetching, error) => {
+
     useEffect(()=> {
-        props.getSmurf();
-    }, []);
+       props.getSmurf();
+    }, [getSmurf]);
 
     if (isFetching) {
         return <h2>Fetching Smurfs</h2>
     } 
 
     if (error) {
-        return <h2>error</h2>
-    };
-
+        return <h2>{error}</h2>
+    }
+    
     return(
         <div>
-            {props.smurfs.map(smurf => {
-                <Smurfs smurf={smurf} key={smurf.id} />
-    
+            {props.smurfs.map(smurf => { 
+                return <Smurfs smurf={smurf} key={smurf.id} />        
             })}
         </div>
       
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps,{getSmurf})(SmurfsList)
+export default connect(mapStateToProps,{getSmurf})(SmurfsList); 

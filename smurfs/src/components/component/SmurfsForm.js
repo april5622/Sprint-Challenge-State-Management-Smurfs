@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { addSmurf } from "../store/action/index";
 import { connect } from "react-redux";
-import {Form} from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 
 const SmurfsForm = ({addSmurf}) => {
@@ -30,7 +30,7 @@ const SmurfsForm = ({addSmurf}) => {
         />
         <h2>How Old Are They??</h2>
         <input 
-            nage="age"
+            name="age"
             value={input.age}
             placeholder= "Age"
             onChange={handleChange}
@@ -42,7 +42,7 @@ const SmurfsForm = ({addSmurf}) => {
             placeholder="Height"
             onChange={handleChange}
         />
-        <input type="submit" value="submit">SUBMIT</input>
+        <button type="submit" value="submit">SUBMIT</button>
         </Form>
     );
 }
